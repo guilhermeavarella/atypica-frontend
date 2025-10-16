@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --base-font-size: 16px;
+}
+
+html { font-size: var(--base-font-size); }
+
+.skip-link { z-index: 50; }
+
+/* Focus visible for keyboard navigation */
+:focus-visible {
+  outline: 3px solid #f59e0b; /* amber-500 */
+  outline-offset: 2px;
+}
