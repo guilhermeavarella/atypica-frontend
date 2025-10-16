@@ -1,0 +1,19 @@
+:root {
+  /* Brand */
+  --brand-primary: #7651E9;
+  --brand-primary-light: #9E7FFF;
+  --brand-secondary: #FDC77F;
+
+  /* Content */
+  --content-primary: #464646;
+  --content-secondary: #686D7C;
+  --content-tertiary: #9A9BBB;
+  --content-light: #D4D5F9;
+  --content-inverse: #FFFFFF;
+
+  /* Background */
+  --background-fixed-white: #FFFFFF;
+  --background-yellow: #FFF9EC;
+  --background-purple: #F2ECFF;
+  --background-purple-light: #F8F4FF;
+}

@@ -9,9 +9,23 @@ export default {
     extend: {
       colors: {
         brand: {
-          DEFAULT: '#6D28D9',
-          dark: '#4C1D95'
-        }
+          primary: "var(--brand-primary)",
+          "primary-light": "var(--brand-primary-light)",
+          secondary: "var(--brand-secondary)",
+        },
+        content: {
+          primary: "var(--content-primary)",
+          secondary: "var(--content-secondary)",
+          tertiary: "var(--content-tertiary)",
+          light: "var(--content-light)",
+          inverse: "var(--content-inverse)",
+        },
+        background: {
+          "fixed-white": "var(--background-fixed-white)",
+          yellow: "var(--background-yellow)",
+          purple: "var(--background-purple)",
+          "purple-light": "var(--background-purple-light)",
+        },
       }
     }
   },
