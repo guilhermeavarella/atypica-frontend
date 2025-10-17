@@ -22,6 +22,7 @@ export default {
         },
         background: {
           "fixed-white": "var(--background-fixed-white)",
+          field: "var(--background-field)",
           yellow: "var(--background-yellow)",
           purple: "var(--background-purple)",
           "purple-light": "var(--background-purple-light)",
