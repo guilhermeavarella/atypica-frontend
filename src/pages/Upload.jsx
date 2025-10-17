@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import api from '../services/api'
 import { useNavigate } from 'react-router-dom'
+import Button from '../components/Button'
 
 export default function Upload() {
   const [file, setFile] = useState(null)
-  const [level, setLevel] = useState('fundamental')
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
@@ -20,9 +20,9 @@ export default function Upload() {
     try {
       const form = new FormData()
       form.append('file', file)
-      form.append('level', level)
+      console.log('File:', file)
       const { data } = await api.post('/upload', form, { headers: { 'Content-Type': 'multipart/form-data' } })
-      navigate(`/analysis/${data.jobId}`)
+      navigate(`/blamed/${data.jobId}`)
     } catch (e) {
       alert('Falha no upload (mock).')
     } finally {
@@ -32,46 +32,35 @@ export default function Upload() {
 
   return (
     <section>
-      <h1 className="text-2xl font-bold mb-4">Upload de Material</h1>
-
-      <div className="mb-4">
-        <label className="block mb-1">Nível de ensino</label>
-        <select className="border rounded px-3 py-2 bg-white dark:bg-slate-800" value={level} onChange={e => setLevel(e.target.value)}>
-          <option value="fundamental">Fundamental</option>
-          <option value="medio">Médio</option>
-          <option value="superior">Superior</option>
-          <option value="eja">EJA</option>
-        </select>
-      </div>
-
-      <div
-        onDrop={onDrop}
-        onDragOver={(e) => e.preventDefault()}
-        className="border-2 border-dashed rounded p-10 text-center bg-slate-50 dark:bg-slate-800/40"
-        aria-label="Área de soltar arquivo"
-      >
-        {file ? (
-          <div>
-            <p className="mb-2">Selecionado: <strong>{file.name}</strong></p>
-            <button className="px-3 py-2 rounded bg-brand text-white" onClick={() => setFile(null)}>Trocar</button>
-          </div>
-        ) : (
-          <>
-            <p className="mb-2">Arraste e solte seu PDF aqui</p>
-            <p className="mb-4 text-sm text-slate-500">ou</p>
-            <label className="inline-block px-3 py-2 rounded bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 cursor-pointer">
-              Selecionar arquivo
+      <h1 className="text-center text-2xl font-bold font-poppins my-12">Avalie seu Material</h1>
+      <div  className="w-full p-8 bg-background-fixed-white rounded-[30px] outline outline-1 outline-offset-[-1px] outline-content-light inline-flex flex-col justify-start items-start gap-9 overflow-hidden">
+        <div
+          onDrop={onDrop}
+          onDragOver={(e) => e.preventDefault()}
+          className="w-full px-6 py-16 bg-background-field rounded-2xl outline outline-1 outline-offset-[-1px] outline-content-tertiary inline-flex flex-col justify-center items-center gap-3 overflow-hidden"
+          aria-label="Área de soltar arquivo"
+        >
+          {file ? (
+            <div className="flex flex-col items-center">
+              <p>Arquivo: <strong className="text-brand-primary">{file.name}</strong></p>
+              <Button variant="secondary" text="Alterar" onClick={() => setFile(null)} />
+            </div>
+          ) : (
+            <>
+              <p>Arraste e solte seu PDF aqui</p>
+              <p className="text-sm text-content-secondary">ou</p>
+              <Button variant="primary" text="Selecionar arquivo" onClick={() => document.querySelector('input[type=file]').click()} />
               <input type="file" accept="application/pdf" className="sr-only" onChange={(e) => setFile(e.target.files?.[0] || null)} />
-            </label>
-          </>
-        )}
-      </div>
+            </>
+          )}
+        </div>
 
-      <div className="mt-6 flex gap-3">
-        <button className="px-4 py-2 rounded bg-brand text-white disabled:opacity-50" onClick={onUpload} disabled={!file || loading}>
-          {loading ? 'Enviando...' : 'Enviar e Analisar'}
-        </button>
-        <button className="px-4 py-2 rounded border" onClick={() => window.history.back()}>Cancelar</button>
+        <div className="mt-6 flex gap-3">
+          <Button variant="primary" text="Enviar e Avaliar" onClick={onUpload} disabled={!file || loading}>
+            {loading ? 'Enviando...' : 'Enviar e Analisar'}
+          </Button>
+          <Button variant="secondary" text="Cancelar" onClick={() => window.history.back()} />
+        </div>
       </div>
     </section>
   )
