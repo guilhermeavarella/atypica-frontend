@@ -19,6 +19,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, element: <Login /> },
+      { path: 'login', element: <Login /> },
       { path: 'dashboard', element: <Dashboard /> },
       { path: 'upload', element: <Upload /> },
       { path: 'analysis/:jobId?', element: <Analysis /> },
