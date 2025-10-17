@@ -26,7 +26,11 @@ export default {
           purple: "var(--background-purple)",
           "purple-light": "var(--background-purple-light)",
         },
-      }
+      },
+      fontFamily: {
+        general: ["General Sans", "ui-sans-serif", "system-ui"],
+        poppins: ["Poppins", "ui-sans-serif", "system-ui"],
+      },
     }
   },
   plugins: []

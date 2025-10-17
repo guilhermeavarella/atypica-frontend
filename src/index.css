@@ -1,10 +1,14 @@
 @import "./styles/colors.css";
+@import "./styles/fonts.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
   --base-font-size: 16px;
+  @media (max-width: 576px) {
+    --base-font-size: 12px;
+  }
 }
 
 html { font-size: var(--base-font-size); }
