@@ -21,7 +21,7 @@ export default function Upload() {
       const form = new FormData()
       form.append('file', file)
       console.log('File:', file)
-      const { data } = await api.post('/upload', form, { headers: { 'Content-Type': 'multipart/form-data' } })
+      const { data } = await api.post('/upload', form, { headers: { 'Content-Type': 'multipart/form-data' } }) // AJUSTAR POST ENDPOINT
       navigate(`/blamed/${data.jobId}`)
     } catch (e) {
       alert('Falha no upload (mock).')
