@@ -1,0 +1,32 @@
+{
+  "requirements": [
+    {
+        "id": "R01",
+        "name": "Requisito 1",
+        "description": "Descrição do requisito 1",
+        "criteria": "Critérios do requisito 1",
+        "relevance": "Relevância do requisito 1",
+        "satisfied": false,
+        "justification": "Justificativa do requisito 1"
+    },
+    {
+        "id": "R02",
+        "name": "Requisito 2",
+        "description": "Descrição do requisito 2",
+        "criteria": "Critérios do requisito 2",
+        "relevance": "Relevância do requisito 2",
+        "satisfied": true,
+        "justification": "Justificativa do requisito 2"
+    },
+    {
+        "id": "R03",
+        "name": "Requisito 3",
+        "description": "Descrição do requisito 3",
+        "criteria": "Critérios do requisito 3",
+        "relevance": "Relevância do requisito 3",
+        "satisfied": false,
+        "justification": "Justificativa do requisito 3"
+
+    }
+  ]
+}
