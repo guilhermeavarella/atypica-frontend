@@ -37,7 +37,7 @@ export default function Upload() {
         <div
           onDrop={onDrop}
           onDragOver={(e) => e.preventDefault()}
-          className="w-full px-6 py-16 bg-background-field rounded-2xl outline outline-1 outline-offset-[-1px] outline-content-tertiary inline-flex flex-col justify-center items-center gap-3 overflow-hidden"
+          className="w-full px-6 py-16 bg-background-field rounded-2xl outline outline-1 outline-content-tertiary inline-flex flex-col justify-center items-center gap-3 overflow-hidden"
           aria-label="Área de soltar arquivo"
         >
           {file ? (
