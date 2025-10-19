@@ -32,7 +32,7 @@ export default function Upload() {
 
   return (
     <section>
-      <h1 className="text-center text-2xl font-bold font-poppins my-12">Avalie seu Material</h1>
+      <h1 className="text-center text-3xl font-bold font-poppins my-12">Avalie seu Material</h1>
       <div  className="w-full p-8 bg-background-fixed-white rounded-[30px] outline outline-1 outline-offset-[-1px] outline-content-light inline-flex flex-col justify-start items-start gap-9 overflow-hidden">
         <div
           onDrop={onDrop}
