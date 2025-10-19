@@ -20,7 +20,14 @@ export default {
   				light: 'var(--content-light)',
   				inverse: 'var(--content-inverse)'
   			},
-  			background: 'hsl(var(--background))',
+  			background: {
+		  DEFAULT: "var(--background-purple)",
+          "fixed-white": "var(--background-fixed-white)",
+          field: "var(--background-field)",
+          yellow: "var(--background-yellow)",
+          purple: "var(--background-purple)",
+          "purple-light": "var(--background-purple-light)",
+        },
   			foreground: 'hsl(var(--foreground))',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
