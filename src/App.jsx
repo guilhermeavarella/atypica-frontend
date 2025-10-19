@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Outlet, Link, useLocation } from 'react-router-dom'
-import AccessibilityBar from './components/AccessibilityBar'
+import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
+import Button from './components/Button'
 
 export default function App() {
   const location = useLocation()
+  const navigate = useNavigate()
   const [dark, setDark] = useState(false)
   const isLoginPage = location.pathname === "/" || location.pathname === "/login";
 
@@ -14,20 +15,28 @@ export default function App() {
   return (
     <div className="min-h-screen bg-background-purple-light text-content-primary dark:bg-slate-900 dark:text-slate-100">
       {!isLoginPage && (
-        <header className="border-b border-slate-200 dark:border-slate-700">
-          <nav className="max-w-6xl mx-auto p-4 flex items-center justify-between" aria-label="Principal">
-            <Link to="/" className="flex items-center gap-2" aria-label="Ir para tela inicial">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded bg-brand text-white font-bold" aria-hidden>α</span>
-              <span className="text-xl font-bold">Atypica</span>
+        <header className="bg-background-fixed-white border-b border-content-light">
+          <nav className="w-full mx-auto p-4 flex items-center justify-between" aria-label="Principal">
+            <Link to="/dashboard" aria-label="Ir para tela inicial">
+              <img src="/src/assets/logos/full_black.svg" alt="logo da Atypica" className="h-12" />
             </Link>
-            <div className="flex items-center gap-4">
-              <Link className="hover:underline" to="/dashboard">Dashboard</Link>
-              <Link className="hover:underline" to="/upload">Upload</Link>
-              <Link className="hover:underline" to="/forum">Fórum</Link>
-              <Link className="hover:underline" to="/help">Ajuda</Link>
-              {/*<button className="px-3 py-1 rounded bg-slate-100 dark:bg-slate-800" onClick={() => setDark(v => !v)} aria-pressed={dark} aria-label={dark ? 'Ativar modo claro' : 'Ativar modo escuro'}>
-                {dark ? 'Claro' : 'Escuro'}
-              </button>*/}
+            <div className="flex items-center gap-4 lg:gap-8">
+              <div className="flex items-center gap-3">
+                <div className="hidden md:flex items-center gap-3">
+                  <Button variant="secondary" text="Painel" onClick={() => { navigate('/dashboard') }} />
+                  <Button variant="secondary" text="Biblioteca" onClick={() => { navigate('/forum') }} />
+                  <Button variant="secondary" text="Comunidade" onClick={() => { navigate('/forum') }} />
+                  <Button variant="secondary" text="Ajuda" onClick={() => { navigate('/help') }} />
+                </div>
+                <Button variant="primary" text="Avaliar material" onClick={() => { navigate('/upload') }} />
+                  {/*<button className="px-3 py-1 rounded bg-slate-100 dark:bg-slate-800" onClick={() => setDark(v => !v)} aria-pressed={dark} aria-label={dark ? 'Ativar modo claro' : 'Ativar modo escuro'}>
+                    {dark ? 'Claro' : 'Escuro'}
+                  </button>*/}
+              </div>
+              <div className="flex items-center gap-1 lg:gap-3">
+                <button onClick={() => {  }}><img src="/src/assets/icons/notifications.svg" alt="Notificações" className="h-9"/></button>
+                <button onClick={() => {  }}><img src="/src/assets/icons/profile.svg" alt="Perfil" className="h-[2.625rem]"/></button>
+              </div>
             </div>
           </nav>
         </header>
