@@ -18,7 +18,7 @@ export default function App() {
         <header className="bg-background-fixed-white border-b border-content-light">
           <nav className="w-full mx-auto p-4 flex items-center justify-between" aria-label="Principal">
             <Link to="/dashboard" aria-label="Ir para tela inicial">
-              <img src="/src/assets/logos/full_black.svg" alt="logo da Atypica" className="h-12" />
+              <img src="/src/assets/logos/large.svg" alt="logo da Atypica" className="h-10 mx-1" />
             </Link>
             <div className="flex items-center gap-4 lg:gap-8">
               <div className="flex items-center gap-3">
