@@ -1,6 +1,7 @@
 import * as React from "react"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
-import { ChevronDown } from "lucide-react"
+import * as CheckboxPrimitive from "@radix-ui/react-checkbox"
+import { Check } from "lucide-react"
 
 import { cn } from "/src/lib/utils"
 
@@ -30,8 +31,7 @@ const AccordionTrigger = React.forwardRef<
         className
       )}
       {...props}
-    >
-      {children}
+    > <div className="flex gap-2">{children}</div>
       <p className="shrink-0 text-brand-primary font-semibold hover:underline">Por quê?</p>
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
