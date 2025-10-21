@@ -18,13 +18,11 @@ export default function Upload() {
     if (!file) return
     setLoading(true)
     try {
-      const form = new FormData()
-      form.append('file', file)
-      console.log('File:', file)
-      const { data } = await api.post('/upload', form, { headers: { 'Content-Type': 'multipart/form-data' } }) // AJUSTAR POST ENDPOINT
+      const { data } = await api.post('/upload', file, { headers: { 'Content-Type': 'application/pdf' } })
+      console.log(data)
       navigate(`/blamed/${data.jobId}`)
     } catch (e) {
-      alert('Falha no upload (mock).')
+      alert('Falha no upload. Tente novamente.')
     } finally {
       setLoading(false)
     }
@@ -33,7 +31,7 @@ export default function Upload() {
   return (
     <section>
       <h1 className="text-center text-3xl font-bold font-poppins my-12">Avalie seu Material</h1>
-      <div  className="w-full p-8 bg-background-fixed-white rounded-[30px] outline outline-1 outline-offset-[-1px] outline-content-light inline-flex flex-col justify-start items-start gap-9 overflow-hidden">
+      <section  className="w-full p-8 bg-background-fixed-white rounded-[30px] outline outline-1 outline-offset-[-1px] outline-content-light inline-flex flex-col justify-start items-start gap-9 overflow-hidden">
         <div
           onDrop={onDrop}
           onDragOver={(e) => e.preventDefault()}
@@ -61,7 +59,7 @@ export default function Upload() {
           </Button>
           <Button variant="secondary" text="Cancelar" onClick={() => window.history.back()} />
         </div>
-      </div>
+      </section>
     </section>
   )
 }
