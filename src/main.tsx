@@ -12,6 +12,7 @@ import Preview from './pages/Preview'
 import Settings from './pages/Settings'
 import Forum from './pages/Forum'
 import Help from './pages/Help'
+import Blamed from './pages/Blamed'
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,8 @@ const router = createBrowserRouter([
       { path: 'preview/:jobId', element: <Preview /> },
       { path: 'settings', element: <Settings /> },
       { path: 'forum', element: <Forum /> },
-      { path: 'help', element: <Help /> }
+      { path: 'help', element: <Help /> },
+      { path: 'blamed/:jobId', element: <Blamed /> }
     ]
   }
 ])
