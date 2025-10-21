@@ -34,6 +34,8 @@ export default function Login() {
           <SectionButton text="Acessar com Google" icon="/src/assets/icons/google.svg" onClick={() => { navigate('/dashboard') }} />
           <SectionButton text="Acessar com Microsoft" icon="/src/assets/icons/microsoft.svg" onClick={() => { navigate('/dashboard') }} />
         </div>
+        <p className="text-content-light mt-[-0.25rem] text-sm">_____________________________________</p>
+        <div className="inline-flex flex-col text-center justify-center text-content-secondary text-sm">Não tem uma conta? <button className="text-brand-primary font-semibold" onClick={() => {}}>Comece agora</button></div>
       </section>
     </div>
   )
