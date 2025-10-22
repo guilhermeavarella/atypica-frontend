@@ -12,9 +12,8 @@ import { Check } from "lucide-react"
 
 export default function Blamed() {
   const { jobId } = useParams()
-  const [requirements, setRequirements] = useState([])
-  const [unsatisfiedRequirements, setUnsatisfiedRequirements] = useState([])
-  const [satisfiedRequirements, setSatisfiedRequirements] = useState([]) 
+  const [unsatisfiedBlamings, setUnsatisfiedBlamings] = useState([])
+  const [satisfiedBlamings, setSatisfiedBlamings] = useState([]) 
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [selectedRequirements, setSelectedRequirements] = useState([])
@@ -22,22 +21,58 @@ export default function Blamed() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const fetchBlamed = async () => {
+    function formatRequirementName(requirement) {
+      const [id, name] = requirement.requirement_name.split(" - ");
+      if (!name) return requirement.requirement_name;
+      return name.charAt(0) + name.slice(1).toLowerCase();
+    }
+    const fetchRequirements = async (reqId) => {
+      const { data } = await api.get(`/get_requirement_definition?requirement_id=${reqId}`) // API CALL
+      return data
+    }
+
+    const separateQuestions = async (blamings) => {
+      const grouped = new Map()
+
+      for (const blaming of blamings) {
+        const qid = blaming.question_id
+        if (!grouped.has(qid)) {
+          grouped.set(qid, [])
+        }
+        grouped.get(qid).push(blaming)
+      }
+
+      return Array.from(grouped.entries()).map(([qid, blamings]) => ({
+        question_id: qid,
+        blamings,
+      })).sort((a, b) => a.question_id - b.question_id)
+    }
+
+
+    const formatBlamings = async (data) => {
+      const unsatisfied = []
+      const satisfied = []
+      for (let i = 0; i < data.length; i++) {
+        const requirementDetails = await fetchRequirements(data[i].requirement_id)
+        data[i].requirement_name = formatRequirementName(requirementDetails)
+
+        if (data[i].satisfied) {
+          satisfied.push(data[i])
+        } else {
+          unsatisfied.push(data[i])
+        }
+      }
+      
+      setUnsatisfiedBlamings(await separateQuestions(unsatisfied))
+      setSatisfiedBlamings(await separateQuestions(satisfied))
+    }
+
+    const fetchBlamings = async () => {
       try {
-        // const { data } = await api.get(`/blame/${jobId}`) // API CALL
-        const response = await fetch("/mocks/blamed.json") // Mocked response
-        const data = await response.json()
+        const { data } = await api.get(`/blame`) // API CALL
         
-        if (data?.requirements) {
-          // Set the full requirements array first (unchanged)
-          setRequirements(data.requirements)
-
-          // Categorize into satisfied and unsatisfied
-          const unsatisfied = data.requirements.filter(req => req.satisfied === false)
-          const satisfied = data.requirements.filter(req => req.satisfied === true)
-
-          setUnsatisfiedRequirements(unsatisfied) 
-          setSatisfiedRequirements(satisfied)
+        if (data) {
+          await formatBlamings(data)
         } else {
           setError("Resposta inesperada do servidor.")
         }
@@ -49,8 +84,7 @@ export default function Blamed() {
       }
     }
 
-
-    fetchBlamed()
+    fetchBlamings()
   }, [jobId]) 
 
   const handleCheckboxChange = (reqId) => {
@@ -63,6 +97,8 @@ export default function Blamed() {
     })
   }
 
+  const totalBlamings = unsatisfiedBlamings.length + satisfiedBlamings.length
+
   const onSubmit = () => {
     const selectedData = { selectedRequirements }
     console.log(selectedData)
@@ -70,45 +106,77 @@ export default function Blamed() {
     navigate(`/solutioned/${jobId}`);
   }
 
-  if (loading) return <p className="text-center mt-8 font-medium">Avaliando...</p>
+  if (loading) return <p className="text-center mt-8 text-xl font-semibold text-brand-primary">Avaliando...</p>
   if (error) return <p className="text-center mt-8 text-red-500">{error}</p>
+  if (unsatisfiedBlamings.length === 0) return (
+    <section className="w-full p-12 bg-background-fixed-white rounded-[30px] outline outline-1 outline-offset-[-1px] outline-content-light inline-flex flex-col items-center gap-9">
+      <p className="text-center text-lg font-semibold text-brand-primary">Parabéns! Seu material está excelente! Não encontramos problemas de acessibilidade.</p>
+      <div className="flex flex-col w-64 justify-center gap-2">
+        <Button variant="primary" text="Avaliar novo material" onClick={() => navigate(`/upload`)} />
+        <Button variant="secondary" text="Voltar ao início" onClick={() => navigate(`/home`)} />
+      </div>
+    </section>
+  )
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col py-4 gap-6">
-      <h1 className="text-center text-2xl font-bold font-poppins my-6">Sua avaliação</h1>
-      {satisfiedRequirements.length === 0 ? ( null ) : (
-      <section className="w-full p-8 bg-background-fixed-white rounded-[30px] outline outline-1 outline-offset-[-1px] outline-content-light inline-flex flex-col gap-9">
-        <div className="w-full inline-flex flex-col justify-start items-start gap-1">
-          <div className="text-2xl font-semibold font-poppins">Destaques</div>
-          <p className="text-content-secondary">Abaixo estão os pontos positivos que tornam seu material acessível a todos.</p>
-        </div>
+      <h1 className="text-center text-2xl font-bold font-poppins my-6">Sua avaliação completa</h1>
 
-        <div className="w-full accordion accordion-flush">
-          <div className="flex flex-col gap-6">
-
-              <Accordion
-                type="single"
-                collapsible
-                className="w-full"
-                defaultValue=""
-              >
-              {satisfiedRequirements.map((req) => (
-              <div>
-                <AccordionItem key={req.id} value={req.id.toString()}>
-                  <AccordionTrigger key={req.id} value={req.id.toString()}>{req.name}</AccordionTrigger>
-                  <AccordionContent className="flex flex-col gap-4 text-balance">
-                    <p>
-                      {req.justification}
-                    </p>
-                  </AccordionContent>
-                </AccordionItem>
-                </div>
-              
-            ))}
-            </Accordion>
+      {satisfiedBlamings.length < totalBlamings/2 ? (
+        <section className="w-full p-8 bg-background-fixed-white rounded-[30px] outline outline-1 outline-offset-[-1px] outline-content-light inline-flex flex-col gap-9">
+          <div className="w-full inline-flex flex-col justify-start items-start gap-1">
+            <div className="text-2xl font-semibold font-poppins">Seu material pode melhorar!</div>
+            <p className="text-content-secondary">Existem requisitos de acessibilidade que podem ser melhorados no seu material. Confira os pontos positivos e negativos.</p>
           </div>
-        </div>
-      </section>
+          <p className="text-sm font-semibold text-brand-primary-light">Aspectos acessíveis no seu material: <b className="text-m">{satisfiedBlamings.length}/{totalBlamings}</b></p>
+        </section>
+      ) : (
+        <section className="w-full p-8 bg-background-fixed-white rounded-[30px] outline outline-1 outline-offset-[-1px] outline-content-light inline-flex flex-col gap-9">
+          <div className="w-full inline-flex flex-col justify-start items-start gap-1">
+            <div className="text-2xl font-semibold font-poppins">Parabéns! Seu material já está bem acessível</div>
+            <p className="text-content-secondary">Mas ainda há o que melhorar. Confira os pontos positivos e negativos.</p>
+          </div>
+          <p className="text-sm font-semibold text-brand-primary-light">Aspectos acessíveis no seu material: <b className="text-m">{satisfiedBlamings.length}/{totalBlamings}</b></p>
+        </section>
+      )}
+
+      {satisfiedBlamings.length === 0 ? ( null ) : (
+        <section className="w-full p-8 bg-background-fixed-white rounded-[30px] outline outline-1 outline-offset-[-1px] outline-content-light inline-flex flex-col gap-9">
+          <div className="w-full inline-flex flex-col justify-start items-start gap-1">
+            <div className="text-2xl font-semibold font-poppins">Destaques</div>
+            <p className="text-content-secondary">Abaixo estão os pontos positivos que tornam seu material acessível a todos.</p>
+          </div>
+
+          <div className="w-full accordion accordion-flush">
+            <div className="flex flex-col gap-6">
+              {satisfiedBlamings.map((question) => (
+                <Accordion
+                  type="single"
+                  collapsible
+                  className="w-full"
+                  defaultValue=""
+                  key={`question_id_${question.question_id}`}
+                >
+                    <p className="text-lg font-semibold mb-2 ml-9">Questão {question.question_id}</p>
+                    {question.blamings.map((blaming) => (
+                      <div>
+                        <AccordionItem key={`${blaming.question_id}${blaming.requirement_id}`} value={`${blaming.question_id}${blaming.requirement_id}`}>
+                          <AccordionTrigger key={`${blaming.question_id}${blaming.requirement_id}`} value={`${blaming.question_id}${blaming.requirement_id}`}>
+                            {blaming.requirement_name}
+                          </AccordionTrigger>
+                          <AccordionContent className="flex flex-col text-pretty">
+                            <p>
+                              {blaming.analysis}
+                            </p>
+                          </AccordionContent>
+                        </AccordionItem>
+                      </div>
+                  ))}
+                </Accordion>
+              ))}
+            </div>
+          </div>
+        </section>
       )}
 
       <section className="w-full p-8 bg-background-fixed-white rounded-[30px] outline outline-1 outline-offset-[-1px] outline-content-light inline-flex flex-col gap-9">
@@ -117,44 +185,39 @@ export default function Blamed() {
           <p className="text-content-secondary">Abaixo estão os pontos que podem ser melhorados no seu material. Clique em cada um para ver a justificativa.</p>
         </div>
 
-        <div className="w-full accordion accordion-flush" id="accordionFlushExample">
-          {unsatisfiedRequirements.length === 0 ? (
-            <p className="text-lg text-center font-semibold text-brand-primary my-4">
-              Seu material está excelente! Não encontramos problemas de acessibilidade.
-            </p>
-          ) 
-          : (
+        <div className="w-full accordion accordion-flush">
             <div className="flex flex-col gap-6">
-
+              {unsatisfiedBlamings.map((question) => (
                 <Accordion
                   type="single"
                   collapsible
                   className="w-full"
                   defaultValue=""
+                  key={`question_id_${question.question_id}`}
                 >
-                {unsatisfiedRequirements.map((req) => (
-                <div>
-                  <AccordionItem key={req.id} value={req.id.toString()}>
-                    <AccordionTrigger key={req.id} value={req.id.toString()}>
-                        <Checkbox key={req.id} 
-                          checked={selectedRequirements.includes(req.id)} 
-                          onCheckedChange={() => handleCheckboxChange(req.id)}>
-                        </Checkbox>
-                        {req.name}
-                      </AccordionTrigger>
-                    <AccordionContent className="flex flex-col gap-4 text-balance">
-                      <p>
-                        {req.justification}
-                      </p>
-                    </AccordionContent>
-                  </AccordionItem>
-                  </div>
-                
+                    <p className="text-lg font-semibold mb-2 ml-9"> {question.question_id === 0 ? "Geral" : `Questão ${question.question_id}`}</p>
+                    {question.blamings.map((blaming) => (
+                      <div>
+                        <AccordionItem key={`${blaming.question_id}${blaming.requirement_id}`} value={`${blaming.question_id}${blaming.requirement_id}`}>
+                          <AccordionTrigger key={`${blaming.question_id}${blaming.requirement_id}`} value={`${blaming.question_id}${blaming.requirement_id}`}>
+                            <Checkbox key={`${blaming.question_id}/${blaming.requirement_id}`} 
+                              checked={selectedRequirements.includes(`${blaming.question_id}/${blaming.requirement_id}`)} 
+                              onCheckedChange={() => handleCheckboxChange(`${blaming.question_id}/${blaming.requirement_id}`)}>
+                            </Checkbox>
+                            {blaming.requirement_name}
+                          </AccordionTrigger>
+                          <AccordionContent className="flex flex-col text-pretty">
+                            <p>
+                              {blaming.analysis}
+                            </p>
+                          </AccordionContent>
+                        </AccordionItem>
+                      </div>
+                  ))}
+                </Accordion>
               ))}
-              </Accordion>
             </div>
-          )}
-        </div>
+          </div>
       </section>
 
       <section className="w-full p-8 bg-background-fixed-white rounded-[30px] outline outline-1 outline-offset-[-1px] outline-content-light inline-flex flex-col gap-9">
