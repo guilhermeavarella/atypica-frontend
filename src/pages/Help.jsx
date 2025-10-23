@@ -34,7 +34,7 @@ export default function Help() {
     <section>
       <h1 className="font-poppins text-[2rem] font-bold mt-4 mb-4 text-center">Central de Ajuda</h1>
 
-      <article className="bg-background-fixed-white border rounded-3xl p-[2rem] border-slate-200 dark:border-slate-700 mb-6">
+      <article className="bg-background-fixed-white border rounded-3xl p-8 border-slate-200 dark:border-slate-700 mb-6">
         <h2 className="font-poppins text-2xl font-bold mb-2">Perguntas Frequentes</h2>
 
         <details>
