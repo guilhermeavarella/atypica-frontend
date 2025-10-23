@@ -1,7 +1,7 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import './index.css'; 
+import '/src/index.css'; 
 import App from './App'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
@@ -13,6 +13,7 @@ import Settings from './pages/Settings'
 import Forum from './pages/Forum'
 import Help from './pages/Help'
 import Blamed from './pages/Blamed'
+import Adapted from './pages/Adapted'
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,8 @@ const router = createBrowserRouter([
       { path: 'settings', element: <Settings /> },
       { path: 'forum', element: <Forum /> },
       { path: 'help', element: <Help /> },
-      { path: 'blamed/:jobId', element: <Blamed /> }
+      { path: 'blamed/:jobId', element: <Blamed /> },
+      { path: 'adapted/:jobId', element: <Adapted /> }
     ]
   }
 ])
