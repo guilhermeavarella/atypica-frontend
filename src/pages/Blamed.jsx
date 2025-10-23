@@ -103,7 +103,7 @@ export default function Blamed() {
     const selectedData = { selectedRequirements }
     console.log(selectedData)
     // INSERIR SUBMIT PARA A API
-    navigate(`/solutioned/${jobId}`);
+    navigate(`/adapted/${jobId}`);
   }
 
   if (loading) return <p className="text-center mt-8 text-xl font-semibold text-brand-primary">Avaliando...</p>
