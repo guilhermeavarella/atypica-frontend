@@ -153,16 +153,19 @@ export default function Blamed() {
                 <Accordion
                   type="single"
                   collapsible
-                  className="w-full"
+                  className="w-full px-9"
                   defaultValue=""
                   key={`question_id_${question.question_id}`}
                 >
-                    <p className="text-lg font-semibold mb-2 ml-9">Questão {question.question_id}</p>
+                    <p className="text-lg font-semibold mb-2">Questão {question.question_id}</p>
                     {question.blamings.map((blaming) => (
                       <div>
                         <AccordionItem key={`${blaming.question_id}${blaming.requirement_id}`} value={`${blaming.question_id}${blaming.requirement_id}`}>
                           <AccordionTrigger key={`${blaming.question_id}${blaming.requirement_id}`} value={`${blaming.question_id}${blaming.requirement_id}`}>
-                            {blaming.requirement_name}
+                            <div className="flex gap-2">
+                              {blaming.requirement_name}
+                            </div>
+                            <p className="shrink-0 text-brand-primary font-semibold hover:underline">Por quê?</p>
                           </AccordionTrigger>
                           <AccordionContent className="flex flex-col text-pretty">
                             <p>
@@ -191,22 +194,25 @@ export default function Blamed() {
                 <Accordion
                   type="single"
                   collapsible
-                  className="w-full"
+                  className="w-full px-9"
                   defaultValue=""
                   key={`question_id_${question.question_id}`}
                 >
-                    <p className="text-lg font-semibold mb-2 ml-9"> {question.question_id === 0 ? "Geral" : `Questão ${question.question_id}`}</p>
+                    <p className="text-lg font-semibold mb-2"> {question.question_id === 0 ? "Geral" : `Questão ${question.question_id}`}</p>
                     {question.blamings.map((blaming) => (
                       <div>
                         <AccordionItem key={`${blaming.question_id}${blaming.requirement_id}`} value={`${blaming.question_id}${blaming.requirement_id}`}>
                           <AccordionTrigger key={`${blaming.question_id}${blaming.requirement_id}`} value={`${blaming.question_id}${blaming.requirement_id}`}>
-                            <Checkbox key={`${blaming.question_id}/${blaming.requirement_id}`} 
-                              checked={selectedRequirements.includes(`${blaming.question_id}/${blaming.requirement_id}`)} 
-                              onCheckedChange={() => handleCheckboxChange(`${blaming.question_id}/${blaming.requirement_id}`)}>
-                            </Checkbox>
-                            {blaming.requirement_name}
+                            <div className="flex gap-2">
+                              <Checkbox key={`${blaming.question_id}/${blaming.requirement_id}`} 
+                                checked={selectedRequirements.includes(`${blaming.question_id}/${blaming.requirement_id}`)} 
+                                onCheckedChange={() => handleCheckboxChange(`${blaming.question_id}/${blaming.requirement_id}`)}>
+                              </Checkbox>
+                              {blaming.requirement_name}
+                            </div>
+                            <p className="shrink-0 text-brand-primary font-semibold hover:underline">Por quê?</p>
                           </AccordionTrigger>
-                          <AccordionContent className="flex flex-col text-pretty">
+                          <AccordionContent className="flex flex-col text-pretty ml-9">
                             <p>
                               {blaming.analysis}
                             </p>
