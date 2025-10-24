@@ -172,7 +172,7 @@ export default function Forum() {
     <section className="p-4 md:p-8">
       {/* Cabeçalho */}
       <div className="flex items-center justify-between mb-8">
-        <h1 className="font-poppins text-[2rem] font-bold text-content-primary">
+        <h1 className="font-poppins text-[2rem] font-bold text-content-inverse">
           Central da comunidade
         </h1>
         <Button variant="primary" text="Publicar" onClick={() => setOpenComposer(true)} />

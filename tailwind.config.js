@@ -11,6 +11,7 @@ export default {
 				brand: {
 					primary: 'var(--brand-primary)',
 					'primary-light': 'var(--brand-primary-light)',
+					'primary-dark': 'var(--brand-primary-dark)',
 					secondary: 'var(--brand-secondary)'
 				},
 				content: {

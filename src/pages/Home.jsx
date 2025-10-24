@@ -22,8 +22,8 @@ export default function Home() {
         <section className="flex flex-col py-4 gap-6">
             <div className="w-full inline-flex flex-row items-center justify-between">
                 <div className="inline-flex flex-col justify-start gap-1">
-                    <h1 className="text-center text-2xl font-bold font-poppins">Bem vindo(a) ao Atypica!</h1>
-                    <p className="text-content-secondary">Torne seu material acessível para todos</p>
+                    <h1 className="text-center text-2xl font-bold font-poppins text-content-inverse">Bem vindo(a) ao Atypica!</h1>
+                    <p className="text-content-light">Torne seu material acessível para todos</p>
                 </div>
                 <img src="/src/assets/icons/inifin.png" alt="Atypica símbolo" className="w-16 h-16"/>
             </div>

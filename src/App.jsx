@@ -61,12 +61,12 @@ export default function App() {
   }
 
   return (
-    <div className={`min-h-screen ${isLoginPage ? 'bg-background-purple-light' : 'bg-background-purple'} text-content-primary dark:bg-slate-900 dark:text-slate-100`}>
+    <div className={`min-h-screen ${isLoginPage ? 'bg-background-purple' : 'bg-brand-primary-dark'} text-content-primary dark:bg-slate-900 dark:text-slate-100`}>
       {!isLoginPage && (
-        <header className="fixed w-full bg-background-fixed-white border-b border-content-light">
-          <nav className="w-full mx-auto p-4 flex items-center justify-between" aria-label="Principal">
+        <header className="fixed px-2 w-full">
+          <nav className="w-full bg-background-fixed-white rounded-[20rem] p-4 flex items-center justify-between" aria-label="Principal">
             <Link to="/home" aria-label="Ir para tela inicial">
-              <img src="/src/assets/logos/large.svg" alt="logo da Atypica" className="h-10 mx-1" />
+              <img src="/src/assets/logos/large.svg" alt="logo da Atypica" className="h-10 mx-3" />
             </Link>
             <div className="flex items-center gap-4 lg:gap-8">
               <div className="flex items-center gap-3">
@@ -102,7 +102,7 @@ export default function App() {
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <button className="fixed top-24 left-5 rounded-full p-1 bg-brand-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-primary"><img src="/src/assets/icons/accessibility.svg" alt="Menu de acessibilidade" className="h-12 w-12" /></button>
+          <button className="fixed top-24 left-5 rounded-full p-1 border-4 border-content-inverse bg-brand-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-primary"><img src="/src/assets/icons/accessibility.svg" alt="Menu de acessibilidade" className="h-12 w-12" /></button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56" align="start" side="right">
           <DropdownMenuLabel>Opções de acessibilidade</DropdownMenuLabel>

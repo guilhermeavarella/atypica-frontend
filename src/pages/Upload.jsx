@@ -36,7 +36,11 @@ export default function Upload() {
 
   return (
     <section>
-      <h1 className="text-center text-3xl font-bold font-poppins my-12">Avalie seu Material</h1>
+      <div className="w-full inline-flex flex-col items-center justify-center mt-12 mb-6 gap-3">
+        <img src="/src/assets/icons/inifin.png" alt="Atypica símbolo" className="w-12 h-12"/>
+        <h1 className="text-center text-3xl text-content-inverse font-bold font-poppins">Avalie seu Material</h1>
+      </div>
+      <img src="/src/assets/icons/line.svg" alt="barra" className="w-[61rem] h-1 mx-[4.5rem] mb-12"/>
       <section  className="w-full p-8 bg-background-fixed-white rounded-[30px] outline outline-1 outline-offset-[-1px] outline-content-light inline-flex flex-col justify-start items-start gap-9 overflow-hidden">
         <div
           onDrop={onDrop}

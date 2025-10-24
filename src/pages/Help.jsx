@@ -30,7 +30,11 @@ export default function Help() {
 
   return (
     <section>
-      <h1 className="font-poppins text-[2rem] font-bold mt-4 mb-4 text-center">Central de Ajuda</h1>
+      <div className="w-full inline-flex flex-col items-center justify-center mt-12 mb-6 gap-3">
+        <img src="/src/assets/icons/inifin.png" alt="Atypica símbolo" className="w-12 h-12"/>
+        <h1 className="text-center text-3xl text-content-inverse font-bold font-poppins">Central de Ajuda</h1>
+      </div>
+      <img src="/src/assets/icons/line.svg" alt="barra" className="w-[61rem] h-1 mx-[4.5rem] mb-12"/>
 
       <article className="bg-background-fixed-white border rounded-3xl p-8 border-slate-200 dark:border-slate-700 mb-6">
         <h2 className="font-poppins text-2xl font-semibold mb-2">Perguntas Frequentes</h2>

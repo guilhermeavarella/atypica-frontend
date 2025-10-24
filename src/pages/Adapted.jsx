@@ -58,7 +58,11 @@ export default function Adapted() {
 
   return (
       <section className="flex flex-col py-4 gap-6">
-        <h1 className="text-center text-2xl font-bold font-poppins my-6">Material melhorado</h1>
+        <div className="w-full inline-flex flex-col items-center justify-center mt-12 gap-3">
+          <img src="/src/assets/icons/inifin.png" alt="Atypica símbolo" className="w-12 h-12"/>
+          <h1 className="text-center text-3xl text-content-inverse font-bold font-poppins">Material melhorado</h1>
+        </div>
+        <img src="/src/assets/icons/line.svg" alt="barra" className="w-[61rem] h-1 mx-[4.5rem] mb-6"/>
         
         <section className="w-full p-8 bg-background-fixed-white rounded-[30px] outline outline-1 outline-offset-[-1px] outline-content-light inline-flex flex-col gap-9">
           <div className="w-full inline-flex flex-col justify-start items-center gap-1">
