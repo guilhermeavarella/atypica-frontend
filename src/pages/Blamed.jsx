@@ -8,7 +8,7 @@ import { Accordion,
 import Button from "../components/Button"
 import { Checkbox } from "../components/Checkbox"
 import { useForm } from 'react-hook-form';
-import { Check } from "lucide-react"
+import { RequirementsDisplay } from "../components/RequirementsDisplay"
 
 export default function Blamed() {
   const { jobId } = useParams()
@@ -162,8 +162,9 @@ export default function Blamed() {
                       <div>
                         <AccordionItem key={`${blaming.question_id}${blaming.requirement_id}`} value={`${blaming.question_id}${blaming.requirement_id}`}>
                           <AccordionTrigger key={`${blaming.question_id}${blaming.requirement_id}`} value={`${blaming.question_id}${blaming.requirement_id}`}>
-                            <div className="flex gap-2">
+                            <div className="flex items-center gap-3">
                               {blaming.requirement_name}
+                              <RequirementsDisplay/>
                             </div>
                             <p className="shrink-0 text-brand-primary font-semibold hover:underline">Por quê?</p>
                           </AccordionTrigger>
@@ -203,12 +204,13 @@ export default function Blamed() {
                       <div>
                         <AccordionItem key={`${blaming.question_id}${blaming.requirement_id}`} value={`${blaming.question_id}${blaming.requirement_id}`}>
                           <AccordionTrigger key={`${blaming.question_id}${blaming.requirement_id}`} value={`${blaming.question_id}${blaming.requirement_id}`}>
-                            <div className="flex gap-2">
+                            <div className="flex items-center gap-3">
                               <Checkbox key={`${blaming.question_id}/${blaming.requirement_id}`} 
                                 checked={selectedRequirements.includes(`${blaming.question_id}/${blaming.requirement_id}`)} 
                                 onCheckedChange={() => handleCheckboxChange(`${blaming.question_id}/${blaming.requirement_id}`)}>
                               </Checkbox>
                               {blaming.requirement_name}
+                              <RequirementsDisplay/>
                             </div>
                             <p className="shrink-0 text-brand-primary font-semibold hover:underline">Por quê?</p>
                           </AccordionTrigger>

@@ -6,7 +6,7 @@ import { Accordion,
   AccordionItem,
   AccordionTrigger, } from "../components/RequirementAccordion"
 import Button from "../components/Button"
-import { ChevronDown } from "lucide-react"
+import { RequirementsDisplay } from "../components/RequirementsDisplay"
 
 export default function Adapted() {
   const { jobId } = useParams()
@@ -75,13 +75,13 @@ export default function Adapted() {
             adaptations[currentQuestionIndex].changes.length > 0 ? (
               <div className="w-full inline-flex flex-col md:flex-row items-center md:items-start gap-6">
                 <div className="w-full max-w-[50%] flex flex-col items-center gap-8">
-                  <div className="whitespace-pre-line flex flex-col gap-2">
+                  <div className="w-full whitespace-pre-line flex flex-col gap-2">
                     <p className="text-lg font-semibold">Questão original</p>
                     <div className="w-full p-4 rounded-[30px] outline outline-1 outline-offset-[-1px] outline-content-light">
                       <p className="text-sm font-normal text-pretty">{adaptations[currentQuestionIndex].old_question}</p>
                     </div>
                   </div>
-                  <div className="whitespace-pre-line flex flex-col gap-2">
+                  <div className="w-full whitespace-pre-line flex flex-col gap-2">
                     <p className="text-lg font-semibold">Questão adaptada</p>
                     <div className="w-full p-4 rounded-[30px] outline outline-1 outline-offset-[-1px] outline-content-light">
                       <p className="text-sm font-normal text-pretty">{adaptations[currentQuestionIndex].new_question}</p>
@@ -92,11 +92,11 @@ export default function Adapted() {
                   <p className="text-lg font-semibold">O que mudou?</p>
                   
                   <div className="w-full p-4 flex flex-col rounded-[30px] outline outline-1 outline-offset-[-1px] outline-content-light gap-2">
-                    <div className="whitespace-pre-line flex flex-col gap-2">
+                    <div className="w-full whitespace-pre-line flex flex-col gap-2">
                       <p className="text-sm text-center font-semibold">Resumo das mudanças</p>
                       <p className="text-sm font-normal text-center">A questão foi corrigida para se adequar aos requisitos {adaptations[currentQuestionIndex].requirements_ids.join(", ")}</p>
                     </div>
-                    <div className="whitespace-pre-line flex flex-col gap-2">
+                    <div className="w-full whitespace-pre-line flex flex-col gap-2">
                       <p className="text-sm text-center font-semibold">Adaptações</p>
                       <Accordion
                         type="single"
@@ -109,6 +109,7 @@ export default function Adapted() {
                               <AccordionItem key={`${reqId}`} value={`${reqId}`}>
                                 <AccordionTrigger key={`${reqId}`} value={`${reqId}`}>
                                   Adaptação ao requisito {reqId}
+                                  <RequirementsDisplay/>
                                 </AccordionTrigger>
                                 <AccordionContent className="flex flex-col text-pretty">
                                   <p>
@@ -142,7 +143,7 @@ export default function Adapted() {
             <p className="text-content-secondary">Compartilhe seu material com toda a comunidade para que mais pessoas possam usar!</p>
           </div>
           <div className="w-full inline-flex flex-row justify-center items-center gap-4">
-            <Button variant="primary" text="Quero compartilhar" type="submit" onClick={() => {}} />
+            <Button variant="primary" text="Quero compartilhar" type="submit" onClick={() => {navigate(`/upload`)}} />
           </div>
         </section>
       </section>

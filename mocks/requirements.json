@@ -1,0 +1,58 @@
+[
+  {
+    "name": "RF01 - Seção de identificação",
+    "description": "O cabeçalho da atividade avaliativa deve apresentar em seu início uma seção de identificação do aluno, em que constem campos para que o aluno coloque suas informações, como por exemplo seu nome, sua turma, sua série, data, número de matrícula etc."
+  },
+  {
+    "name": "RF02 - Seção de instruções no cabeçalho",
+    "description": "A prova deve conter, logo em seu início, uma seção de instruções para sua realização. Essa seção informa, por exemplo, a quantidade de questões, a duração da prova, a pontuação de cada questão, permissividade de consulta e anotações etc."
+  },
+  {
+    "name": "RF03 - Pontuação das questões",
+    "description": "A prova deve indicar explicitamente a pontuação (valor) de cada questão. Essa indicação pode ocorrer na seção de instruções da prova, por exemplo “Essa prova contém 5 questões, cada uma valendo 2,0 pontos” ou individualmente em cada questão, por exemplo, “Questão 1 (1,5 pontos) O Brasil faz fronteira com quais países da América do Sul?”."
+  },
+  {
+    "name": "RF04 - Comando da questão",
+    "description": "O enunciado deve conter um comando explícito; ou seja, deve pedir explicitamente ao aluno que realize uma ação ou responda."
+  },
+  {
+    "name": "RF05 - Clareza no uso de pronomes possessivos",
+    "description": "O enunciado não deve conter ambiguidades sintáticas provocadas por mau uso de pronomes possessivos (seu, sua, dele ou dela). Sempre que os pronomes possessivos aparecerem no enunciado, eles devem necessariamente apresentar um referente claro."
+  },
+  {
+    "name": "RF06 - Clareza no uso de pronomes relativos",
+    "description": "O enunciado não deve conter ambiguidades sintáticas provocadas por mau uso de pronomes relativos (que, qual, os quais, as quais, de que, etc.). Sempre que os pronomes relativos aparecerem no enunciado, eles devem necessariamente apresentar um referente claro."
+  },
+  {
+    "name": "RF07 - Clareza na extensão das orações subordinadas",
+    "description": "O enunciado não deve empregar excesso de orações subordinadas que comprometam a compreensão."
+  },
+  {
+    "name": "RF08 - Clareza em enunciados com orações alternadas",
+    "description": "O enunciado não deve conter excesso de orações alternadas (“ou... ou...”) que prejudiquem a compreensão."
+  },
+  {
+    "name": "RF09 - Evitar dupla negativa",
+    "description": "O enunciado não deve apresentar dupla negativa, capaz de confundir o aluno."
+  },
+  {
+    "name": "RF10 - Explicação de vocabulário específico",
+    "description": "Quando o enunciado utiliza estrangeirismo, vocábulo técnico ou pouco usual, deve haver explicação em nota de rodapé ou glossário."
+  },
+  {
+    "name": "RNF01 - Uso predominante da voz ativa",
+    "description": "O enunciado deve empregar majoritariamente a voz ativa."
+  },
+  {
+    "name": "RNF02 - Paralelismo sintático",
+    "description": "Estruturas semelhantes devem ser formuladas com a mesma lógica sintática."
+  },
+  {
+    "name": "RNF03 - Concisão do enunciado",
+    "description": "O enunciado deve ser conciso; se longo, deve ser dividido em subtens."
+  },
+  {
+    "name": "RNF04 - Consistência terminológica",
+    "description": "O enunciado deve usar os mesmos termos para se referir a um mesmo conceito."
+  }
+]
