@@ -65,7 +65,7 @@ export default function App() {
       {!isLoginPage && (
         <header className="fixed w-full bg-background-fixed-white border-b border-content-light">
           <nav className="w-full mx-auto p-4 flex items-center justify-between" aria-label="Principal">
-            <Link to="/dashboard" aria-label="Ir para tela inicial">
+            <Link to="/home" aria-label="Ir para tela inicial">
               <img src="/src/assets/logos/large.svg" alt="logo da Atypica" className="h-10 mx-1" />
             </Link>
             <div className="flex items-center gap-4 lg:gap-8">
