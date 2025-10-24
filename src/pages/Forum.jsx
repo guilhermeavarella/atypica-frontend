@@ -188,7 +188,7 @@ export default function Forum() {
             className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-content-light"
           />
           <input
-            className="w-full pl-11 pr-4 py-2 border border-content-secondary rounded-2xl text-sm bg-background-fixed-white focus:outline-none"
+            className="w-full pl-11 pr-4 py-2 border border-content-tertiary rounded-2xl text-sm bg-background-fixed-white focus:outline-none"
             placeholder="Buscar por um título, conteúdo ou material"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -203,7 +203,7 @@ export default function Forum() {
             {filteredSorted.map((t) => (
               <li
                 key={t.id}
-                className="border border-content-secondary rounded-3xl p-5 hover:bg-background-purple-light transition"
+                className="border border-content-tertiary rounded-3xl p-5 hover:bg-background-purple-light transition"
               >
                 <button
                   className="text-left w-full"
