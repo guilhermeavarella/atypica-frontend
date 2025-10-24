@@ -47,7 +47,7 @@ export default function AccessibilityBar() {
         <span className="sr-only" id="a11ybar">Barra de acessibilidade</span>
         <button className="px-2 py-1 rounded bg-white dark:bg-slate-700" aria-describedby="a11ybar" onClick={() => setFontScale(s => Math.max(0.75, s - 0.1))}>A-</button>
         <button className="px-2 py-1 rounded bg-white dark:bg-slate-700" aria-describedby="a11ybar" onClick={() => setFontScale(s => Math.min(1.75, s + 0.1))}>A+</button>
-        <button className="px-2 py-1 rounded bg-white dark:bg-slate-700" aria-pressed={highContrast} aria-describedby="a11ybar" onClick={() => setHighContrast(v => !v)}>
+        <button className="px-2 py-1 rounded bg-white dark:bg-slate-700" aria-pressed={highContrast} aria-describedby="a11ybar" onClick={() => setHighContrast(v => !v)}    >
           Alto contraste
         </button>
         <button className="px-2 py-1 rounded bg-white dark:bg-slate-700" onClick={reading ? stop : speakSelection} aria-live="polite">
