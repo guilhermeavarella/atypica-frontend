@@ -143,7 +143,7 @@ export default function Adapted() {
             <p className="text-content-secondary">Compartilhe seu material com toda a comunidade para que mais pessoas possam usar!</p>
           </div>
           <div className="w-full inline-flex flex-row justify-center items-center gap-4">
-            <Button variant="primary" text="Quero compartilhar" type="submit" onClick={() => {navigate(`/upload`)}} />
+            <Button variant="primary" text="Quero compartilhar" type="submit" onClick={() => {navigate(`/forum`)}} />
           </div>
         </section>
       </section>

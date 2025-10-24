@@ -46,40 +46,65 @@ const MOCK_TOPICS = [
   {
     id: 'mock-1',
     author: { name: 'Carlos Almeida', avatar: null },
-    title: 'Lorem',
+    title: 'Como adaptar textos longos para alunos com TDAH?',
     content:
-      'Lorem ipsum dolor sit amet consectetur. Semper interdum lectus ipsum tincidunt. Blandit quis tellus sodales ut in donec elementum sit purus. At non consequat ut tincidunt in id quis neque.',
+      'Tenho trabalhado com a adaptação de textos escolares e percebi que alunos com TDAH se beneficiam muito de divisões curtas e visuais no conteúdo. Alguém mais tem sugestões de boas práticas ou ferramentas para tornar a leitura mais acessível e envolvente?',
     createdAt: new Date().getTime() - 14 * 60 * 60 * 1000,
     comments: [
-      { author: 'Usuário Teste', text: 'Este é um comentário de teste! 🚀' },
-      { author: 'Outro Tester', text: 'Testando... 1, 2, 3.' },
+      { author: 'Marina Lopes', text: 'Uso ícones e cores para destacar trechos importantes, ajuda muito na atenção! 🎨' },
+      { author: 'Rafael S.', text: 'Também recomendo incluir pausas e resumos rápidos entre os parágrafos.' },
     ],
   },
   {
     id: 'mock-2',
     author: { name: 'Julio Passos de Souza', avatar: null },
-    title: 'Ipsum',
+    title: 'Compartilhando um material adaptado de Ciências',
     content:
-      'Lorem ipsum dolor sit amet consectetur. Semper interdum lectus ipsum tincidunt. Blandit quis tellus sodales ut in donec elementum sit purus. At non consequat ut tincidunt in id quis neque.',
+      'Adaptei um material de Ciências sobre o sistema solar com linguagem simplificada e ilustrações contrastantes. O app facilitou muito o processo! Estou deixando aqui o link para quem quiser testar e sugerir melhorias.',
     createdAt: new Date().getTime() - 25 * 60 * 60 * 1000,
     comments: [
-      { author: 'Usuário Teste', text: 'Este é um comentário de teste! 🚀' },
-      { author: 'Outro Tester', text: 'Testando... 1, 2, 3.' },
+      { author: 'Lívia Campos', text: 'Ficou excelente, Julio! As imagens são bem claras e fáceis de entender. 🌍' },
+      { author: 'André M.', text: 'Adorei! Acho que vou adaptar o de Geografia com base no seu modelo.' },
     ],
   },
   {
     id: 'mock-3',
     author: { name: 'Ariane Junior', avatar: null },
-    title: 'Dolor',
+    title: 'Dúvida: como deixar os materiais mais inclusivos para dislexia?',
     content:
-      'Lorem ipsum dolor sit amet consectetur. Semper interdum lectus ipsum tincidunt. Blandit quis tellus sodales ut in donec elementum sit purus. At non consequat ut tincidunt in id quis neque.',
+      'Olá, pessoal! Estou produzindo um material para alunos com dislexia e gostaria de sugestões de fontes, espaçamento e estilos visuais que melhorem a leitura. Alguém aqui já experimentou recursos específicos dentro do app?',
     createdAt: new Date().getTime() - 560 * 60 * 60 * 1000,
     comments: [
-      { author: 'Usuário Teste', text: 'Este é um comentário de teste! 🚀' },
-      { author: 'Outro Tester', text: 'Testando... 1, 2, 3.' },
+      { author: 'Fernando Vieira', text: 'Uso a fonte OpenDyslexic e aumento o espaçamento entre linhas, ajuda bastante.' },
+      { author: 'Paula Reis', text: 'Também evito blocos longos de texto — separo por cores e ícones.' },
+    ],
+  },
+  {
+    id: 'mock-4',
+    author: { name: 'Carlos Almeida', avatar: null },
+    title: 'Conteúdos informativos sobre neurodiversidade',
+    content:
+      'Sugiro que o app tenha uma seção de artigos curtos explicando os diferentes tipos de neurodivergência. Isso ajuda professores e colegas a entenderem melhor as necessidades e fortalece a empatia no ambiente escolar.',
+    createdAt: new Date().getTime() - 72 * 60 * 60 * 1000,
+    comments: [
+      { author: 'Ana Paula', text: 'Excelente ideia, Carlos! Informação é a base da inclusão. 💡' },
+      { author: 'João Victor', text: 'Podemos até incluir histórias reais de adaptação bem-sucedida.' },
+    ],
+  },
+  {
+    id: 'mock-5',
+    author: { name: 'Julio Passos de Souza', avatar: null },
+    title: 'Feedback sobre a ferramenta de compartilhamento',
+    content:
+      'Notei que o compartilhamento de materiais adaptados funciona bem, mas poderia ter uma aba de recomendações — tipo “usuários que adaptaram este material também gostaram de...”. O que acham dessa melhoria?',
+    createdAt: new Date().getTime() - 8 * 60 * 60 * 1000,
+    comments: [
+      { author: 'Clara N.', text: 'Seria ótimo! Facilitaria encontrar recursos parecidos rapidamente. 🔎' },
+      { author: 'Rafael S.', text: 'Concordo, Julio. Isso deixaria a experiência mais colaborativa.' },
     ],
   },
 ]
+
 
 export default function Forum() {
   const [topics, setTopics] = useState([])

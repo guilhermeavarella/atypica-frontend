@@ -90,7 +90,7 @@ export default function App() {
         </header>
       )}
 
-      <main id="main" className="min-h-[85vh] max-w-6xl mx-auto pt-[6rem] p-4">
+      <main id="main" className="min-h-[calc(100vh-6rem)] max-w-6xl mx-auto pt-[6rem] p-4">
         <Outlet />
       </main>
 
@@ -120,13 +120,13 @@ export default function App() {
               {reading ? 'Parar leitura' : 'Ler em voz alta'}
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => {
-              setFontScale(s => Math.max(0.75, s - 0.1))
+              setFontScale(s => Math.min(1.75, s + 0.1))
             }}>
               <img src="/src/assets/icons/accessibility-menu/larger.svg" alt="ícone" className="h-6 w-6" />
               Texto maior
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => {
-              setFontScale(s => Math.min(1.75, s + 0.1))
+              setFontScale(s => Math.max(0.75, s - 0.1))
             }}>
               <img src="/src/assets/icons/accessibility-menu/smaller.svg" alt="ícone" className="h-6 w-6" />
               Texto menor

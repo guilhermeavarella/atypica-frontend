@@ -20,11 +20,9 @@ export default function Help() {
     try {
       const form = new FormData()
       form.append('file', file)
-      console.log('File:', file)
-      const { data } = await api.post('/upload', form, { headers: { 'Content-Type': 'multipart/form-data' } }) // AJUSTAR POST ENDPOINT
       navigate(`/blamed/${data.jobId}`)
     } catch (e) {
-      alert('Falha no upload (mock).')
+      alert('Falha no upload. Tente novamente.')
     } finally {
       setLoading(false)
     }
@@ -35,7 +33,7 @@ export default function Help() {
       <h1 className="font-poppins text-[2rem] font-bold mt-4 mb-4 text-center">Central de Ajuda</h1>
 
       <article className="bg-background-fixed-white border rounded-3xl p-8 border-slate-200 dark:border-slate-700 mb-6">
-        <h2 className="font-poppins text-2xl font-bold mb-2">Perguntas Frequentes</h2>
+        <h2 className="font-poppins text-2xl font-semibold mb-2">Perguntas Frequentes</h2>
 
         <details>
           <summary className="cursor-pointer">Como envio meu material?</summary>
@@ -74,13 +72,13 @@ export default function Help() {
       </article>
 
       <article className="bg-background-fixed-white border rounded-3xl p-[2rem] border-slate-200 dark:border-slate-700 mb-6">
-        <h2 className="font-poppins text-2xl font-bold">Como usar o Atypica?</h2>
+        <h2 className="font-poppins text-2xl font-semibold">Como usar o Atypica?</h2>
         <p className="font-normal mb-2">Assista o video abaixo</p>
         <div className="aspect-video bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500">Vídeo (mock)</div>
       </article>
 
       <article className="bg-background-fixed-white border rounded-3xl p-[2rem] border-slate-200 dark:border-slate-700">
-        <h2 className="font-poppins text-2xl font-bold text-center">Entre em contaFto</h2>
+        <h2 className="font-poppins text-2xl font-semibold text-center">Entre em contaFto</h2>
         <p className="font-normal mb-2 text-center">Precisa de ajuda? Fale conosco</p>
 
         <form className="grid gap-3 max-w-lg mx-auto">
@@ -129,7 +127,7 @@ export default function Help() {
             </div>
           </label>
 
-          <button className="w-full min-h-[2.25rem] px-[2rem] py-[0.75rem] bg-brand-primary rounded-3xl inline-flex justify-center items-center gap-1" onClick={(e) => { e.preventDefault(); alert('Mensagem enviada (mock).') }}>
+          <button className="w-full min-h-[2.25rem] px-[2rem] py-[0.75rem] bg-brand-primary rounded-3xl inline-flex justify-center items-center gap-1" onClick={(e) => { e.preventDefault(); alert('Mensagem enviada.') }}>
             <div className="text-center justify-center text-content-inverse text-sm font-semibold font-poppins">Continuar</div>
           </button>
         </form>
