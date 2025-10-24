@@ -15,18 +15,24 @@ export default function Upload() {
   }
 
   const onUpload = async () => {
-    if (!file) return
-    setLoading(true)
-    try {
-      const { data } = await api.post('/upload', file, { headers: { 'Content-Type': 'application/pdf' } })
-      console.log(data)
-      navigate(`/blamed/${data.jobId}`)
-    } catch (e) {
-      alert('Falha no upload. Tente novamente.')
-    } finally {
-      setLoading(false)
-    }
+  if (!file) return
+  setLoading(true)
+  try {
+    const formData = new FormData()
+    formData.append('file', file)
+
+    const { data } = await api.post('/upload', formData, { // API CALL
+      headers: { 'Content-Type': 'multipart/form-data' },
+    })
+    
+    navigate(`/blamed/${data.jobId || ''}`)
+  } catch (e) {
+    console.error(e)
+    alert('Falha no upload. Tente novamente.')
+  } finally {
+    setLoading(false)
   }
+}
 
   return (
     <section>
