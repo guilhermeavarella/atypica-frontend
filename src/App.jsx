@@ -61,7 +61,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-background-purple-light text-content-primary dark:bg-slate-900 dark:text-slate-100">
+    <div className={`min-h-screen ${isLoginPage ? 'bg-background-purple-light' : 'bg-background-purple'} text-content-primary dark:bg-slate-900 dark:text-slate-100`}>
       {!isLoginPage && (
         <header className="bg-background-fixed-white border-b border-content-light">
           <nav className="w-full mx-auto p-4 flex items-center justify-between" aria-label="Principal">
