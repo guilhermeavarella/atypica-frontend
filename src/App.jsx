@@ -63,7 +63,7 @@ export default function App() {
   return (
     <div className={`min-h-screen ${isLoginPage ? 'bg-background-purple-light' : 'bg-background-purple'} text-content-primary dark:bg-slate-900 dark:text-slate-100`}>
       {!isLoginPage && (
-        <header className="bg-background-fixed-white border-b border-content-light">
+        <header className="fixed w-full bg-background-fixed-white border-b border-content-light">
           <nav className="w-full mx-auto p-4 flex items-center justify-between" aria-label="Principal">
             <Link to="/dashboard" aria-label="Ir para tela inicial">
               <img src="/src/assets/logos/large.svg" alt="logo da Atypica" className="h-10 mx-1" />
@@ -71,8 +71,8 @@ export default function App() {
             <div className="flex items-center gap-4 lg:gap-8">
               <div className="flex items-center gap-3">
                 <div className="hidden md:flex items-center gap-3">
-                  <Button variant="secondary" text="Painel" onClick={() => { navigate('/dashboard') }} />
-                  <Button variant="secondary" text="Biblioteca" onClick={() => { navigate('/forum') }} />
+                  <Button variant="secondary" text="Painel" onClick={() => { navigate('/home') }} />
+                  <Button variant="secondary" text="Biblioteca" onClick={() => { navigate('/home') }} />
                   <Button variant="secondary" text="Comunidade" onClick={() => { navigate('/forum') }} />
                   <Button variant="secondary" text="Ajuda" onClick={() => { navigate('/help') }} />
                 </div>
@@ -90,12 +90,12 @@ export default function App() {
         </header>
       )}
 
-      <main id="main" className="max-w-6xl mx-auto p-4">
+      <main id="main" className="min-h-[85vh] max-w-6xl mx-auto pt-[6rem] p-4">
         <Outlet />
       </main>
 
       {!isLoginPage && (
-      <footer className="mt-12 border-t border-slate-200 dark:border-slate-700">
+      <footer className="mt-12 border-t bg-background-fixed-white border-content-light dark:border-slate-700">
         <div className="max-w-6xl mx-auto p-4 text-sm text-slate-500 dark:text-slate-400">© 2025 Atypica • Protótipo</div>
       </footer>
       )}

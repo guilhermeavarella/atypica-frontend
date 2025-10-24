@@ -13,7 +13,7 @@ export default function Login() {
           <div className="text-center justify-center text-content-primary text-2xl font-bold font-poppins">Acesse sua conta</div>
           <div className="text-center justify-center text-content-secondary text-sm">Torne seu material acessível para todos</div>
         </div>
-        <form className="w-full mt-2" onSubmit={(e) => { navigate('/dashboard') }}>
+        <form className="w-full mt-2" onSubmit={(e) => { navigate('/home') }}>
           <label className="block mb-2">
             <span className="block text-sm">E-mail</span>
             <input className="w-full h-[2.5rem] px-3.5 py-3 rounded-2xl border border-content-secondary" type="email"/>
@@ -22,17 +22,17 @@ export default function Login() {
             <span className="block text-sm">Senha</span>
             <input className="w-full h-[2.5rem] px-3.5 py-3 rounded-2xl border border-content-secondary" type="password" />
           </label>
-          <button className="mt-3 w-full min-h-[2.25rem] px-[2rem] py-[0.75rem] bg-brand-primary rounded-3xl inline-flex justify-center items-center gap-1" onClick={() => { navigate('/dashboard') }}>
+          <button className="mt-3 w-full min-h-[2.25rem] px-[2rem] py-[0.75rem] bg-brand-primary rounded-3xl inline-flex justify-center items-center gap-1" onClick={() => { navigate('/home') }}>
             <div className="text-center justify-center text-content-inverse text-sm font-semibold font-poppins">Continuar</div>
           </button>
         </form>
         <div className="text-center justify-center text-content-secondary text-sm underline">Esqueceu sua senha?</div>
         <div className="text-center justify-center text-content-secondary text-base font-normal">ou</div>
         <div className="self-stretch inline-flex flex-col justify-start items-center gap-3">
-          <SectionButton text="Receber código via E-mail" icon="/src/assets/icons/email.svg" onClick={() => { navigate('/dashboard') }} />
-          <SectionButton text="Acessar via QR code" icon="/src/assets/icons/qr.svg" onClick={() => { navigate('/dashboard') }} />
-          <SectionButton text="Acessar com Google" icon="/src/assets/icons/google.svg" onClick={() => { navigate('/dashboard') }} />
-          <SectionButton text="Acessar com Microsoft" icon="/src/assets/icons/microsoft.svg" onClick={() => { navigate('/dashboard') }} />
+          <SectionButton text="Receber código via E-mail" icon="/src/assets/icons/email.svg" onClick={() => { navigate('/home') }} />
+          <SectionButton text="Acessar via QR code" icon="/src/assets/icons/qr.svg" onClick={() => { navigate('/home') }} />
+          <SectionButton text="Acessar com Google" icon="/src/assets/icons/google.svg" onClick={() => { navigate('/home') }} />
+          <SectionButton text="Acessar com Microsoft" icon="/src/assets/icons/microsoft.svg" onClick={() => { navigate('/home') }} />
         </div>
         <p className="text-content-light mt-[-0.25rem] text-sm">_____________________________________</p>
         <div className="inline-flex flex-col text-center justify-center text-content-secondary text-sm">Não tem uma conta? <button className="text-brand-primary font-semibold" onClick={() => {}}>Comece agora</button></div>
