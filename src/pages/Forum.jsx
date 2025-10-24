@@ -154,16 +154,16 @@ export default function Forum() {
       </div>
 
       {/* Container principal */}
-      <div className="bg-background-fixed-white border border-slate-200 rounded-3xl p-6 shadow-sm">
+      <div className="bg-background-fixed-white border border-content-light rounded-[30px] p-6 pb-12 shadow-sm">
         {/* Barra de busca */}
         <div className="relative mb-8">
           <img
             src={SearchIcon}
             alt="Buscar"
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400"
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-content-light"
           />
           <input
-            className="w-full pl-11 pr-4 py-2 border border-content-secondary rounded-2xl text-sm bg-white focus:outline-none"
+            className="w-full pl-11 pr-4 py-2 border border-content-secondary rounded-2xl text-sm bg-background-fixed-white focus:outline-none"
             placeholder="Buscar por um título, conteúdo ou material"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -178,7 +178,7 @@ export default function Forum() {
             {filteredSorted.map((t) => (
               <li
                 key={t.id}
-                className="border border-content-secondary rounded-3xl p-5 hover:bg-slate-50 transition"
+                className="border border-content-secondary rounded-3xl p-5 hover:bg-background-purple-light transition"
               >
                 <button
                   className="text-left w-full"
@@ -211,7 +211,7 @@ export default function Forum() {
 
                   {/* Comentários */}
                   <div className="mt-3">
-                    <button className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium bg-brand-primary-light text-white">
+                    <button className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium bg-brand-primary-light text-content-inverse">
                       <img src={CommentIcon} alt="Comentários" className="w-5 h-5" />
                       {(t.comments || []).length}
                     </button>
@@ -238,7 +238,7 @@ export default function Forum() {
             <label className="block">
               <span className="text-sm font-medium">Título</span>
               <input
-                className="w-full px-3 py-2 border rounded bg-white"
+                className="w-full px-3 py-2 border rounded bg-background-fixed-white"
                 value={newTopic.title}
                 onChange={(e) =>
                   setNewTopic((v) => ({ ...v, title: e.target.value }))
@@ -250,7 +250,7 @@ export default function Forum() {
             <label className="block">
               <span className="text-sm font-medium">Conteúdo</span>
               <textarea
-                className="w-full px-3 py-2 border rounded bg-white"
+                className="w-full px-3 py-2 border rounded bg-background-fixed-white"
                 rows={5}
                 value={newTopic.content}
                 onChange={(e) =>
@@ -269,7 +269,7 @@ export default function Forum() {
               className="absolute inset-0 bg-black/30"
               onClick={() => setSelected(null)}
             />
-            <aside className="absolute right-0 top-0 h-full w-full sm:w-[480px] bg-white border-l border-slate-200 shadow-xl p-4 overflow-y-auto">
+            <aside className="absolute right-0 top-0 h-full w-full sm:w-[480px] bg-background-fixed-white border-l border-content-light shadow-xl p-4 overflow-y-auto">
               <div className="flex items-start justify-end">
                 <button
                   className="px-2 py-1 rounded border text-slate-500 hover:text-slate-700"
