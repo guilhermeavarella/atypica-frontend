@@ -6,8 +6,6 @@ import App from './App'
 import Login from './pages/Login'
 import Home from './pages/Home'
 import Upload from './pages/Upload'
-import Analysis from './pages/Analysis'
-import Settings from './pages/Settings'
 import Forum from './pages/Forum'
 import Help from './pages/Help'
 import Blamed from './pages/Blamed'
@@ -22,8 +20,6 @@ const router = createBrowserRouter([
       { path: 'login', element: <Login /> },
       { path: 'home', element: <Home /> },
       { path: 'upload', element: <Upload /> },
-      { path: 'analysis/:jobId?', element: <Analysis /> },
-      { path: 'settings', element: <Settings /> },
       { path: 'forum', element: <Forum /> },
       { path: 'help', element: <Help /> },
       { path: 'blamed/:jobId?', element: <Blamed /> },
