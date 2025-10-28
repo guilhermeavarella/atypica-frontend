@@ -1,5 +1,6 @@
 # Atypica's frontend
-The frontend of the Atypica App, an AI educational tool for acessibility for the neurodivergent community. 
+The frontend of the Atypica App, an AI educational tool for acessibility for the neurodivergent community.  
+> For the functioning AI-powered solution, please access: https://github.com/henriqueedu2001/atypica-backend
 
 ## Installation
 Make sure you have **Node.js** and **npm** installed.
